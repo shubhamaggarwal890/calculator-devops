@@ -1,0 +1,8 @@
+---
+- hosts: remoteserver
+  become: true
+  tasks:
+    - name: Copy built Jar file
+        copy:
+          src: ./target/calculator-devops-1.0-SNAPSHOT-jar-with-dependencies.jar
+          dest: ~/calculator-devops-jar.jar

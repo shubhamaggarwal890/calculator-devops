@@ -1,11 +1,13 @@
 package calculator;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Calculator {
-    private static final Logger logger = Logger.getLogger(Calculator.class);
+    private static final Logger logger = LogManager.getLogger(Calculator.class);
 
     public Calculator() {
     }
@@ -16,39 +18,38 @@ public class Calculator {
         double number1, number2;
         do {
             System.out.println("Calculator-DevOps, Choose to perform operation");
-            System.out.println("Press 1 to Add\nPress 2 to Subtract\nPress 3 to Multiply\nPress 4 to Divide\n" +
+            System.out.print("Press 1 to Add\nPress 2 to Subtract\nPress 3 to Multiply\nPress 4 to Divide\n" +
                     "Press any other key to exit\nEnter your choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException error) {
+                return;
+            }
+            try {
+                System.out.print("Enter the first number : ");
+                number1 = scanner.nextDouble();
+                System.out.print("Enter the second number : ");
+                number2 = scanner.nextDouble();
+            } catch (InputMismatchException error) {
+                logger.error("Invalid input, Entered input is not a number");
+                return;
+            }
             switch (choice) {
                 case 1:
-                    System.out.print("Enter the first number : ");
-                    number1 = scanner.nextDouble();
-                    System.out.print("Enter the second number : ");
-                    number2 = scanner.nextDouble();
+                    // do addition
                     System.out.println("Addition result is : " + calculator.add(number1, number2));
                     break;
                 case 2:
                     // do subtraction
-                    System.out.print("Enter the first number : ");
-                    number1 = scanner.nextDouble();
-                    System.out.print("Enter the second number : ");
-                    number2 = scanner.nextDouble();
                     System.out.println("Subtraction result is : " + calculator.subtract(number1, number2));
                     break;
                 case 3:
                     // do multiplication
-                    System.out.print("Enter the first number : ");
-                    number1 = scanner.nextDouble();
-                    System.out.print("Enter the second number : ");
-                    number2 = scanner.nextDouble();
                     System.out.println("Multiplication result is : " + calculator.multiply(number1, number2));
                     break;
                 case 4:
                     // do division
-                    System.out.print("Enter the first number : ");
-                    number1 = scanner.nextDouble();
-                    System.out.print("Enter the second number : ");
-                    number2 = scanner.nextDouble();
                     System.out.println("Division result is : " + calculator.divide(number1, number2));
                     break;
                 default:
