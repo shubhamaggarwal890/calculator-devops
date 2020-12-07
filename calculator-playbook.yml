@@ -1,7 +1,6 @@
 ---
 - name: Copy jar file to remoter server
   hosts: remoteserver
-  become: true
   tasks:
   - copy:
       src: ./target/calculator-devops-1.0-SNAPSHOT-jar-with-dependencies.jar
