@@ -61,31 +61,31 @@ public class Calculator {
 
 
     public double add(double number1, double number2) {
-        logger.info("Adding two numbers " + number1 + " and " + number2);
+        logger.info("[ADDITION] - " + number1 + ", " + number2);
         double result = number1 + number2;
-        logger.info("Result of addition is " + result);
+        logger.info("[RESULT - ADDITION] - " + result);
         return result;
     }
 
     public double subtract(double number1, double number2) {
-        logger.info("Subtracting two numbers " + number1 + " and " + number2);
+        logger.info("[SUBTRACTION] - " + number1 + ", " + number2);
         double result = number1 - number2;
-        logger.info("Result of subtraction is " + result);
+        logger.info("[RESULT - SUBTRACTION] - " + result);
         return result;
     }
 
 
     public double multiply(double number1, double number2) {
-        logger.info("Multiplying two numbers " + number1 + " and " + number2);
+        logger.info("[MULTIPLICATION] - " + number1 + ", " + number2);
         double result = number1 * number2;
-        logger.info("Result of multiplication is " + result);
+        logger.info("[RESULT - MULTIPLICATION] - " + result);
         return result;
     }
 
     public double divide(double number1, double number2) {
         double result = 0;
         try {
-            logger.info("Dividing two numbers " + number1 + " and " + number2);
+            logger.info("[DIVISION] - " + number1 + ", " + number2);
             if (number1 == 0 && number2 == 0) {
                 result = Double.NaN;
                 throw new ArithmeticException("Case of NaN 0.0/0.0");
@@ -99,9 +99,9 @@ public class Calculator {
                 result = number1 / number2;
             }
         } catch (ArithmeticException error) {
-            logger.error("Number cannot be divided by zero " + error.getLocalizedMessage());
+            logger.error("[EXCEPTION - DIVISION] - Cannot be divided by ZERO " + error.getLocalizedMessage());
         } finally {
-            logger.info("Result of dividing is " + result);
+            logger.info("[RESULT - DIVISION] - " + result);
         }
         return result;
     }
